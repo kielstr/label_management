@@ -1,0 +1,337 @@
+
+<link rel="stylesheet" href="/css/dropzone.css">
+<link rel="stylesheet" type="text/css" href="/css/jquery.tagsinput.css" />
+<link rel="stylesheet" href="/css/AcidWorxDemo.css">
+
+<script src="/javascripts/jquery.tagsinput.js"></script>
+<script src="/javascripts/dropzone.js"></script>
+<script src="/javascripts/demo.js"></script>
+
+<style>
+
+div.tagsinput {
+  //border-radius: 12px;
+      margin-top: 3px;
+}
+
+div.tagsinput span.tag {
+  background-color: #FFFFFF;
+  border: 1px solid #ccc;
+}
+
+</style>
+<script>
+
+$(function() {
+
+    var index = 0;
+
+    acidworx.demo = {
+      name : "<%session.demo.name%>",
+      loggedIn: <%session.demo.logged_in%>,
+      artistName : "<%session.demo.artist_name%>",
+      country : {
+        code : "<%session.demo.country_id%>",
+        text : null
+      },
+      email : {
+        confimed : <%IF session.demo.email %>true<%ELSE%>false<%END%>,
+        valid : <%IF session.demo.email %>true<%ELSE%>false<%END%>,
+        value : "<%session.demo.email%>"
+      },
+      sentToOtherLabels : <%IF session.sent_to_other == 0 %>true<%ELSE%>false<%END%>,
+      otherLabels : [],
+      description : "<%session.demo.demo_desc%>",
+      token: "<%session.demo.token%>",
+      files : [],
+      files2 : [],
+      description : "<%session.demo.demo_desc%>",
+      sendBy : "<%session.demo.send_by%>",
+      linkURL : null,
+      link : {},
+      errors : [],
+      mode : 'display',
+      valid : function () {
+
+        if (this.name === null || this.name === "") {
+          console.log("error --- no name entered");
+          acidworx.demo.errors.push("No name entered");
+          $("#name").addClass("borderRed");
+        } else {
+          if ($("#name").hasClass("borderRed")) {
+            $("#name").removeClass("borderRed");
+          }
+        }
+
+        if (this.artistName === null || this.artistName === "") {
+          console.log("error --- no artist name entered");
+          acidworx.demo.errors.push("No artist name entered");
+          $("#artistName").addClass("borderRed");
+        } else {
+          if ($("#artistName").hasClass("borderRed")) {
+            $("#artistName").removeClass("borderRed");
+          }
+        }
+
+        if (this.email.valid === false) {
+          if (!this.email.value) {
+            console.log("error --- email not entered");
+            acidworx.demo.errors.push("email not entered");
+          } else if (this.email.value && this.email.valid === false) {
+            console.log("error --- email did not pass valiadation");
+            acidworx.demo.errors.push("email did not pass valiadation");
+          }
+          
+          $("#email").addClass("borderRed");
+
+        }
+
+        if (this.email.confimed === false) {
+          console.log("error --- email is not confirmed");
+          acidworx.demo.errors.push("email did not pass valiadation");
+          $("#email").addClass("borderRed");
+        } else {
+          $("#email").removeClass("borderRed");
+        }
+
+        if (this.sentToOtherLabels === true) {
+          console.log("error --- sent to other labels. We don't want it reject the whole submition");
+          //acidworx.demo.errors.push("It is best to wait for the ") 
+        }
+
+        if (this.sendBy === 'link' && !this.linkURL) {
+          console.log("send by as link but no URL provided");
+          acidworx.demo.errors.push("send by as link but no URL provided");
+          $("#link").addClass("borderRed");
+        }
+
+        if (this.sendBy === 'upload' && this.files.length === 0) {
+          console.log("error --- send by upload but no files uploaded");
+          acidworx.demo.errors.push("Configured to upload files but not file have been sent to the server.");
+          $(".dropzone").addClass("borderRed");
+        } else if ($(".dropzone").hasClass("borderRed")) {
+          console.log("removing red border class");
+            $(".dropzone").removeClass("borderRed");
+        }
+
+        // check files for valid state
+
+        if (this.sendBy === 'link' && acidworx.demo.link.valid === false) {
+          console.log("send by as link but URL is invalid");
+          acidworx.demo.errors.push("send by as link but URL is invalid");
+        }
+
+        return (acidworx.demo.errors.length === 0) ? true : false;
+
+      }
+    };
+
+
+    if( acidworx.demo.sendBy == "upload" ) {
+      $("#linkContainer").hide();
+
+      if (acidworx.demo.loggedIn === true) {
+        $("#fileUploader").show();
+      } else {
+        $(".noLoginUpload").show();
+      }
+      //acidworx.demo.sendBy = "upload";
+    } else {
+      $("#linkContainer").show();
+
+      if (acidworx.demo.loggedIn === true) {
+        $("#fileUploader").hide();
+      } else {
+        $(".noLoginUpload").hide();
+      }
+
+      //acidworx.demo.sendBy = "link";
+    }
+
+    $('#tags').tagsInput({
+      'width' : 'auto', 
+      'height' :'50px',
+      //'width':'300px',
+      'defaultText' : '',
+      'placeholderColor' : '#000000',
+      'removeWithBackspace' : true,
+      'maxChars' : 100,
+      'clickable' : 'no',
+      onAddTag : function (elem, elem_tags) {
+          acidworx.demo.otherLabels.push(elem);
+      },
+      onRemoveTag : function(elem) {
+          var index = acidworx.demo.otherLabels.indexOf(elem);
+          if (index > -1) {
+              acidworx.demo.otherLabels.splice(index, 1);
+          }
+      },
+    });
+});
+</script>
+
+<div class="confirmEmail">
+  <div class="pagePopUp">
+    <img src="/images/icons/emailIcon.png" id="emailIcon">
+    <p class="pageText">
+      Your email is important to us! <br>
+      All our communication is done via it. We have sent a code to this email and you need to enter it below to continue.
+      <br>
+      <br>
+      <div class="textAlignRight pageText">
+        <a href="#">Resend</a>&nbsp;|&nbsp;<a href="#">Change email</a>
+      </div>
+
+        <br>
+      <div class="center">
+        <input type="text" id="emailConfirmCode">
+        <button id="emailConfirmButton">confirm</button>
+      </div>
+      
+    </p>
+  </div>
+</div>
+
+
+<div class="pageError">
+  <div class="pagePopUp" class=>
+    <p class="pageText">
+        <h3>Your submittion has errors</h3>
+        <div class="errors"></div>
+    </p>
+    <br>
+    <br>
+    <button class="closeError"> OK </button>
+  </div>
+</div>
+
+
+<div class="pageShadow"></div>
+</div>
+
+<div id="demoText">
+  <h3>We prefer receiving 320kbps mp3’s files and untimed download links. </h3>
+  Here you will find everything you need to send your demo to us. 
+  <br>
+  <br>
+  It is a  good idea to send your very best work and at least <b>3 different tracks</b>.
+  If you have arranged remixes please include them.
+   <br>
+   <br>
+  When sending a demo you have 2 options. You can upload files directly or send us links to a file, a SoundCloud or whatever. 
+   <br>
+  <br>
+  To upload a file you must have a user account and be logged in.
+   <br>
+  <br>
+  This is an automated system. You will recived notifiactions via email as your demo progresses through.
+  <br>
+  <br>
+  Good Luck!!
+  <br>
+  <br>
+</div>
+
+<br>
+
+<fieldset>
+<legend>Details</legend>
+
+<form id="demoForm" method="post" action="/demo" novalidate="novalidate" enctype="multipart/form-data">
+<br>
+<div class="required">
+  <input id="name" type="text" name="name" value="<%session.demo.name%>" required>
+  <label for="name">Name</label>
+</div>
+<br>
+
+<div class="required">
+  <input id="artistName" type="text" name="artist_name" value="<%session.demo.artist_name%>" required>
+  <label for="artistName" >Artist Name:</label>
+</div>
+
+<div>
+<span id="countryLabel">Country</span>
+<br>
+<select name="country_id" id="country">
+  <%FOREACH country IN countries%>
+  <%country.country_code%>
+    <option value="<%country.country_id%>" <%IF country.country_id == session.demo.country_id %>selected<%END%>><%country.country_name%></option>
+  <%END%>
+</select>
+</div>
+<br>
+
+<div class="required">
+  <input id="email" type="text" name="email" value="<%session.demo.email%>" required>
+  <label for="email">Email:</label>
+</div>
+<br>
+
+<div id="otherLabels">
+  <span>Have you sent this demo to any other labels?</span>
+  <br>
+  <div id="otherLabelsRadio">
+    <input type="radio" name="sent_to_other" value="1" <%IF session.demo.sent_to_other == 1 %>checked<%END%>>
+    <label for="Yes" class="fontColor">Yes</label>
+    <br>
+    <input type="radio" name="sent_to_other" value="0" <%IF session.demo.sent_to_other == 0 %>checked<%END%> required>
+    <label for="No" class="fontColor">No</label>
+  </div>
+</div>
+
+<br>
+<label for="">What other labels have you released on?</label>
+<br>
+<div>
+  <input id="tags" type="text" class="tags" value="<%session.demo.released_on%>" name="released_on"></p>
+</div>
+
+<div>
+  <span>How will you be sending your demo?</span>
+  <br>
+  <div id="sendBy">
+    <input type="radio" name="send_by" value="link" <%IF session.demo.send_by == "link" %>checked<%END%>>
+    <label for="byLink" class="fontColor">By link</label>
+    <br>
+    <input type="radio" name="send_by" value="upload" <%IF session.demo.send_by == "upload" %>checked<%END%> required>
+    <label for="byUpload" class="fontColor">By upload</label>
+    <br>
+  </div>
+</div>
+
+<br>
+<div class="" id="linkContainer">
+  <div id="link1Container">
+    <input id="link1" type="text" name="link1" id="link1" value="<%session.demo.link%>" required>
+    <label for="link1">Link to your demo</label>
+  </div>
+  <br>
+  <button type="button" class="addLink">Add</button>
+</div>
+<%IF session.demo.logged_in == 'true' %>
+
+  <div class="dropzone" id="fileUploader">
+    <div class="fallback">
+      <input name="file" type="file" />
+    </div>
+  </div>
+<br>
+
+<%ELSE%>
+<div class="border center noLoginUpload">
+  You must be logged in to upload files
+</div>
+<%END%>
+<br>
+<div>
+  <textarea id="demoDesc" cols="20" rows="10" name="descripton" required><%session.demo.demo_desc%></textarea>
+  <label for="demoDesc">Demo desription</label>
+</div>
+<!--- <div><span>char:</span> <span id="charCountDown"></span></div> -->
+</br>
+<br>
+<button type="button" value="Submit Demo" id="submitButton">Submit Demo</button>
+</form>
+<br>
+</fieldset>

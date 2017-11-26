@@ -1,0 +1,16 @@
+<fieldset>
+	<legend>Select User</legend>
+
+	<form action="/user_management/edit" method="get">
+
+	<select name="username">
+	<%FOR user IN all_users%>
+		<option value="<%user.username%>"><%user.username%></option>
+	<%END%>
+	</select>
+	<br>
+	<br>
+	<button type="submit">Next</button>
+	</form>
+
+</fieldset>

@@ -1,0 +1,16 @@
+<fieldset>
+<legend>Demo Management</legend>
+<br>
+	<div>
+		<div class="table widthFull heightFull">
+			<div class="row">
+				<div class="cell center cellValignCenter width50percent"><img src="/images/icons/demoManagementIcon.png"></div>
+				<div class="cell cellValignCenter width50percent">
+					<a href="/manage_demos/new_demos">New Demos</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<br>
+</fieldset>

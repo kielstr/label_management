@@ -1,0 +1,63 @@
+
+<fieldset>
+<legend>Label management</legend>
+<br>
+	<div>
+		<div class="table widthFull heightFull">
+			<div class="row">
+				<div class="cell center cellValignCenter width50percent"><img src="/images/icons/artistManagementIcon.png"></div>
+				<div class="cell cellValignCenter width50percent">
+					<a href="/manage_artists">Artist Management</a>
+				</div>
+			</div>
+			<br>
+			<div class="row">
+				<div class="cell center cellValignCenter width50percent"><img src="/images/icons/releaseManagementIcon.png"></div>
+				<div class="cell cellValignCenter width50percent"><a href="/manage_release">Release Management</a></div>
+			</div>
+			<br>
+			<div class="row">
+				<div class="cell center cellValignCenter width50percent"><img src="/images/icons/demoManagementIcon.png"></div>
+				<div class="cell cellValignCenter width50percent">
+					<a href="/manage_demos">Demo Management</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<br>
+</fieldset>
+
+<br>
+
+<fieldset>
+	<legend>User Management</legend>
+	<br>
+	<div>
+		<div class="table widthFull heightFull">
+			<div class="row">
+				<div class="cell center cellValignCenter width50percent"><img src="/images/icons/addUserIcon.png"></div>
+				<div class="cell cellValignCenter width50percent">
+					<a href="/user_management/add">Add User</a>
+				</div>
+			</div>
+			<br>
+			<div class="row">
+				<div class="cell center cellValignCenter width50percent"><img src="/images/icons/editUserIcon.png"></div>
+				<div class="cell cellValignCenter width50percent"><a href="/user_management/edit">Edit User</a></div>
+			</div>
+			<!-- <br>
+			<div class="row">
+				<div class="cell center cellValignCenter width50percent"><img src="/images/icons/removeUserIcon.png"></div>
+				<div class="cell cellValignCenter width50percent">
+					<a href="/user_management/remove">Remove User</a>
+				</div>
+			</div>
+			-->
+		</div>
+	</div>
+	<br>
+
+</fieldset>
+
+<br>

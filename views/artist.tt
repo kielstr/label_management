@@ -1,0 +1,108 @@
+<script type="text/javascript" src="/javascripts/AcidWorxArtist.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/AcidWorxArtist.css">
+
+<%IF mode == 'new_artist' %>
+<p class="pageText">
+    <img id="congratulationsIcon" src="/images/congratulations.png">Congratulations on being selected as an AcidWorx artist. 
+    <br>
+    Please provide the following information.
+  </p>
+<%END%>
+
+<fieldset>
+<legend>Details</legend>
+<form id="artistForm" method="post" action="<%action%>" novalidate="novalidate">
+  <br>
+  <div class="required">
+    <input id="artistName" name="artist_name" type="text" value="<% session.artist.artist_name %>" required>
+    <label for="artistName">Name</label>
+  </div>
+  <br>
+  <div class="required">
+    <input id="name" type="text" name="name" value="<% session.artist.name %>" required>
+    <label for="name">Real Name</label>
+  </div>
+  <br>
+  <div>
+    <input id="addressOne" type="text" name="address_line1" value="<% session.artist.address_line1 %>" required>
+    <label for="addressOne" >Address line 1</label>
+  </div>
+  <br>
+  <div>
+    <input id="addressTwo" type="text" name="address_line2" value="<% session.artist.address_line2 %>" required>
+    <label for="addressTwo" >Address line 2</label>
+  </div>
+  <br>
+  <div>
+    <input id="addressThree" type="text" name="address_line3" value="<% session.artist.address_line3 %>" required>
+    <label for="addressThree" >Address Line 3</label>
+  </div>
+  <div>
+    <span id="countryLabel">Country</span>
+    <br>
+    <select name="country_id">
+      <%FOREACH country IN countries%>
+      <%country.country_code%>
+        <option value="<%country.country_id%>" <%IF country.country_id == session.artist.country_id %>selected<%END%>><%country.country_name%></option>
+      <%END%>
+    </select>
+  </div>
+  <br>
+  <div class="required">
+    <input id="email" type="text" name="email" value="<% session.artist.email %>" required>
+    <label for="email">Email</label>
+  </div>
+  <br>
+  <div class="required">
+    <input id="paymentEmail" type="text" name="payment_email" value="<% session.artist.payment_email %>" required>
+    <label for="paymentEmail">Payment Email</label>
+  </div>
+  <br>
+  <div>
+    <input id="soundcloudPage" type="text" name="soundcloud_url" value="<% session.artist.soundcloud_url %>" required>
+    <label for="soundcloudPage">Soundcloud page</label>
+  </div>
+  <br>
+  <div>
+    <input id="raPage" type="text" name="ra_url" value="<% session.artist.ra_url %>" required>
+    <label for="raPage">RA Page:</label>
+  </div>
+  <br>
+  <div>
+    <input id="beatportPage" type="text" name="beatport_url" value="<% session.artist.beatport_url %>" required>
+    <label for="beatportPage" >Beatport page</label>
+  </div>
+  <br>
+  <div>
+    <input id="facebookPage" type="text" name="facebook_page" value="<% session.artist.facebook_page %>" required>
+    <label for="facebookPage" >Facebook page</label>
+  </div>
+  <br>
+  <div>
+    <input id="website" type="text" name="website" value="<% session.artist.website %>" required>
+    <label for="website">Artist website</label>
+  </div>
+  <br>
+  <div>
+    <textarea id="bio" name="bio" required ><% session.artist.bio %></textarea>
+    <label for="bio" >Bio</label>
+  </div>
+  <br>
+  <div>
+    <%IF mode == 'add'%>
+      <%button_text = 'Add' %>
+    <%ELSIF mode == 'edit'%>
+      <input type=hidden name="update" value="1">
+      <%button_text = 'Update' %>
+    <%ELSE%>
+      <%button_text = 'Sign up' %>
+    <%END%>
+    <button id="submitForm" type="button"><%button_text%></button>
+  </fieldset>
+</form>
+
+<!--
+<pre>
+<%USE Dumper; Dumper.dump_html({ session => session }) %>
+</pre>
+-->

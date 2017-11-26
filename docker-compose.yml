@@ -1,0 +1,62 @@
+version: "3.4"
+#version: "2"
+
+services:
+    traefik:
+        image: traefik:1.4.3
+#        image: containous/traefik:redirect
+        ports:
+            - 80:80
+            - 8080:8080
+        networks:
+            - webapps_overlay
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+        configs:
+            - source: traefik-config
+              target: /etc/traefik/traefik.toml
+        deploy:
+            placement:
+                constraints:
+                    - node.role == manager
+    acidworx:
+        image: namic:5000/acidworx
+        networks:
+            - webapps_overlay
+        volumes:
+            #- /Users/kiel/swarm/acidworx/AW1/dev/AcidWorx:/acidworx
+            - type: volume
+              source: acidworxnfs
+              target: /acidworx
+              volume:
+                nocopy: true
+        deploy:
+            placement:
+                constraints:
+                  - node.role == worker
+            labels:
+              - "traefik.port=80"
+              - "traefik.backend=acidworx"
+              - "traefik.frontend.rule=Host:acidchild.org"
+networks:
+     webapps_overlay:
+        external: 
+            name: webapps_overlay
+        ipam:
+            config:
+            - subnet: 172.25.0.0/24
+
+volumes: 
+    acidworxnfs:
+        driver: local
+        driver_opts:
+            type: "nfs"
+            o: "addr=10.0.0.1,nolock,soft,rw"
+            device: ":/mnt/nfs/webapp/acidworx/AW1/dev/AcidWorx"
+
+#    acidworxfs:
+
+
+configs:
+    traefik-config:
+        file: config.toml

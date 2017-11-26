@@ -1,0 +1,19 @@
+
+<form action="<%action%>" method=post>
+<fieldset>
+	<legend>Artists</legend>
+	<select id="artists" name="artist">
+	<%FOR artist IN artists%>
+		<option value=<%artist.id%>><%artist.name%>
+	<%END%>
+	</select>
+	<br>
+	<br>
+	<button type="submit" value="Next">Next</button>
+</fieldset>
+</form>
+<!--
+<pre>
+<%USE Dumper; Dumper.dump_html({ artists => artists }) %>
+</pre>
+-->

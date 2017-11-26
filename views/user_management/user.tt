@@ -1,0 +1,50 @@
+<fieldset>
+	DIR: <%dir%>
+	<legend>User</legend>
+	<form action="/user_management/<%mode%>" novalidate="novalidate" method="post" enctype="multipart/form-data">
+	<br>
+
+	<%IF mode == 'add' %>
+		<div>
+			<input id="text" name="username" type="text" required>
+			<label for="text">Username</label>
+		</div>
+	<%ELSE%>
+		<div>
+			<label for="text">User: <%user_details.username%></label>
+			<input type="hidden" name="username" value="<%user_details.username%>">
+		</div>
+		<br>
+		<br>
+	<%END%>
+
+	<br>
+	<div>
+		<input id="email" name="email" type="text" value="<%user_details.email%>" required>
+		<label for="email">Email</label>
+	</div>
+	<br>
+	<br>
+	<div>
+		<input id="fileUpload" name="profile_image" type='file'>
+		<label for="fileUpload">Profile Image</label>
+	</div>
+
+	<%IF user_details.image %>
+		<img src="<%user_details.image%>" height=200>
+	<%END%>
+
+	<br>
+	</br>
+
+	<%IF mode == 'add' %>
+		<button type="submit">Create</button>
+	<%ELSE%>
+		<button type="submit">Update</button>
+	<%END%>
+
+
+	
+
+	</form>
+</fieldset>

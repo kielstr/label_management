@@ -1,0 +1,30 @@
+<fieldset>
+	<legend>Track</legend>
+	<form id="artistForm" method="post" action="<%action%>" novalidate="novalidate">
+  	<br>
+  	<div class="required">
+    	<input id="artistName" name="artist_id" type="text" value="<% session.artist.artist_name %>" required>
+    	<label for="artistName">Artist</label>
+  	</div>
+  	<br>
+  	<div class="required">
+    	<input id="trackName" name="artist_id" type="text" value="<% session.artist.artist_name %>" required>
+    	<label for="trackName">Name</label>
+  	</div>
+  	<br>
+  	<div class="required">
+    	<input id="file" name="artist_id" type="file" value="<% session.artist.artist_name %>">
+    	<label for="file">File</label>
+  	</div>
+  	<br>
+  	<div>
+    <%IF mode == 'add'%>
+      <%button_text = 'Add' %>
+    <%ELSIF mode == 'edit'%>
+      <input type=hidden name="update" value="1">
+      <%button_text = 'Update' %>
+    <%END%>
+    <button id="submitForm" type="button"><%button_text%></button>
+    </div>
+  	</form>
+  </fieldset>

@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<link rel="stylesheet" href="/css/alertify.rtl.css">
+<link rel="stylesheet" href="/css/themes/default.rtl.css">
+
+<!-- include alertify script -->
+<script src="/javascripts/alertify.js"></script>
+
+<link rel="icon" href="/images/icon.jpg" />
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+<meta http-equiv="Content-type" content="text/html; charset=[% settings.charset %]" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
+<meta name="theme-color" content="#000000" />
+
+<title>AcidWorx</title>
+<link rel="stylesheet" href="<% request.uri_base %>/css/style.css" />
+<link rel="stylesheet" href="/css/style.css" />
+
+<!-- Grab jQuery from a CDN, fall back to local if necessary -->
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript">/* <![CDATA[ */
+    !window.jQuery && document.write('<script type="text/javascript" src="<% request.uri_base %>/javascripts/jquery.js"><\/script>')
+/* ]]> */</script>
+
+
+<link rel="stylesheet" href="/css/AcidWorxPopUp.css" />
+
+<script src="/javascripts/AcidWorx.js"></script>
+<script src="/javascripts/AcidWorxUtils.js"></script>
+
+<%IF JSON%>
+<script type="text/javascript">
+$( document ).ready(function () {
+  
+  var user = jQuery.parseJSON( '<%JSON%>' );
+  //console.log( user.profileImg );
+
+  //$( "#profileMenuIcon" ).css('background-image', 'url(/images/profile/acid%20child%20logo.jpg)' );
+
+
+  if ( user.profileImg ) {
+    $( "#profileMenuIcon" ).css('background-image', 'url("' + user.profileImg + '")');
+  }
+
+});
+
+</script>
+
+<%END%>
+
+</head>
+<body>
+
+<%  IF errors  %>
+	<div id="server-error">
+        <ul>
+            <%  FOREACH row in errors  %>
+                <li><%  row  %></li>
+            <%  END  %>
+        </ul>
+    </div>
+<%  END  %>
+
+<div id="headerPad"></div>
+<div id="header">
+	<div class="table widthFull heightFull">
+		<div class="row">
+			<%IF session.logged_in_user%>
+				<div class="cell center profileMenuWidth cellValignCenter" id="profileMenu" >
+					<img id="sideMenuIcon" src="/images/sideMenu-icon-menu.png"></div>
+			<%END%>
+			<div class="cell center cellValignCenter"><img id="acidworxLogo" class="center" src="/images/acidworx.jpg"></div>
+			<%IF session.logged_in_user%>
+			<div class="cell center sideMenuIconWidth cellValignCenter"> 
+        
+        <div class="table">
+          <div class="row">
+
+    				<div id="profileMenuIcon" class="center profileMenuIconWidth cell"></div>
+
+            <div class="profileMenuText cell">Acid Child ... </div>
+          </div>
+        </div>
+
+        <div id="profileDropDown" class="dropdown-content">
+          <a href="#">Edit Profile</a>
+          <a href="/user_management/change_password">Change Password</a>
+          <a href="/logout">Log Out</a>
+        </div>
+
+
+
+
+			</div>
+			<%END%>
+		</div>
+	</div>
+</div>
+
+<div id="subHeader">
+  <!-- sub header. page nav -->
+  <div class="table widthFull heightFull">
+    <div class="row">
+      <div class="cell width60px cellValignCenter">
+        <%IF back_url%>
+        	<a href=<%back_url%>><image id="backImg" src="/images/backIcon.png"></a>
+        <%END%>
+      </div>
+      <div class="cell cellValignCenter">
+        <span class="subHeaderText"><% page_title %></span>
+      </div>
+      <div class="cell width60px"></div>
+    </div>
+  </div>
+</div>
+<br>
+<div id="content">
+	<% content %>
+</div>
+
+<div id="footer"></div>
+<%IF session.logged_in_user == 'acidchild' %>
+<!--<pre>
+<% #USE Dumper; Dumper.dump_html({ session => session }) %>
+</pre>
+-->
+<%END%>
+
+</body>
+</html>

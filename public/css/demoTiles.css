@@ -1,0 +1,70 @@
+.demoTiles {
+	//border: 1px solid green;
+	width: 75%;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	margin: 0 auto;
+	background-color: #eee;
+	text-align: center;
+}
+
+.demoTiles > .tile {
+	margin:20px;
+	//height: 400px;
+	width: 100%;
+	max-width: 400px;
+	border: 1px solid #eee;
+	display: inline-block;
+	background-color: white;
+	border-radius: 10px;
+	padding-bottom: 31px;
+}
+
+.demoTiles .detailLabel {
+	width: 25%; //calc(25% - 2px );
+	display: inline-block;
+	text-align: center;
+	//border: 1px dotted black;
+	background-color: #f9f9f9;
+	margin-bottom: 10px;
+	margin-right: 10px;
+}
+ 
+.demoTiles .tile .detailItem {
+	width: 50%;
+	display: inline-block;
+	text-align: left;
+}
+
+.demoTiles .tile h3 {
+	font-size: 26px;
+}
+
+.demoTiles .tile h4 {
+	font-size: 20px;
+}
+
+
+.demoTiles .tile .demoTileFiles {
+  width: 100%;
+}
+
+.demoTiles .tile .demoTileFiles div {
+    display: inline-block;
+}
+
+@media (max-width: 600px)  {
+	.demoTiles {
+		width: 100%
+	}
+	.demoTiles .tiles {
+		width:90%;
+		padding-top: 0px;
+		padding-bottom: 0px;
+	}
+
+  	.demoTiles .tile {
+		width: calc(100% - 40px);
+		//max-width: 100%;
+	}
+}

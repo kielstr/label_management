@@ -1,0 +1,45 @@
+<%  IF errors  %>
+        <div id="server-error">
+        <ul>
+            <%  FOREACH row in errors  %>
+                <li><%  row  %></li>
+            <%  END  %>
+        </ul>
+    </div>
+<%  END  %>
+
+<%IF new_requests %>
+<form method="post" action="/manage_artists/new_requests">
+  <div class="table width90Percent centerTable">
+    <div class="row">
+        <div class="tableHeader">Name</div>
+        <div class="tableHeader">Artist Name</div>
+        <div class="tableHeader">Email</div>
+        <div class="tableHeader">Approve</div>
+      </div>
+    <%FOR request IN new_requests%>
+      <div class="row">
+        <div class="cell cellBorder"><%request.name%></div>
+        <div class="cell cellBorder"><%request.artist_name%></div>
+        <div class="cell cellBorder"><%request.email%></div>
+        <div class="cell cellBorder"><input type="checkbox" name="approve" value=<%request.token%>></div>
+      </div>
+    <%END%>
+  </div>
+
+  <br>
+  <div class="width90Percent center">
+    <button type="submit" value="update">Update</button>
+  </div>
+<%ELSE%>
+  <div class="table width90Percent centerTable">
+    <div class="row">
+      <div class="tableHeader">No new request</div>
+    </div>
+  </div>
+<%END%>
+
+
+<pre>
+  <% #USE Dumper; Dumper.dump_html({ new_requests => new_requests }) %>
+</pre>

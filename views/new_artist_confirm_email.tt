@@ -1,0 +1,27 @@
+<%  IF errors  %>
+        <div id="server-error">
+        <ul>
+            <%  FOREACH row in errors  %>
+                <li><%  row  %></li>
+            <%  END  %>
+        </ul>
+    </div>
+<%  END  %>
+<div id="page">
+  <div id="pageHeader">
+        <span>New artist sign up</span>
+  </div>
+
+  <form method="post" action="new_artist_confirm_email">
+  <p class="pageText">
+    An email has been sent to <%session.new_artist.email%>. 
+    <br>Please check your email.
+    <br>
+    Confirmation code: <input type="text" name="code">
+    <br>
+    <br>
+    <button type="submit" value="Sign Up">Confirm</button>
+    <br>  
+  </p>
+  </form>
+</div>

@@ -1,0 +1,59 @@
+
+<script type="text/javascript" src="/javascripts/AcidWorxAddRelease.js"></script>
+<br>
+<fieldset>
+  <div class="pageText">
+
+  <div>
+  	<label>Artist</label>
+    <select name="artists">
+    <%FOR artist IN artists%>
+      <option value=<% artist.id %>><% artist.name %></option>
+    <%END%>
+    </select>
+  </div>
+  <br>
+  <div>
+  	<label>Title</label>
+  	<input type=text>
+  </div>
+
+  <div>
+  	<label>Description</label>
+  	<textarea></textarea>
+  </div>
+
+  <div>
+  	<label>Release date</label>
+  	<input type="text">
+  </div>
+
+  <div>
+  	<label>Format</label>
+  	<input type=text>
+  </div>
+  <br>
+  <div>
+  	<label>Image</label>
+  	<br><br>
+  	<input type=file>
+  </div>
+
+  <br>
+  Tracks
+  <br>
+  <div id="tasks"></div>
+  <br>
+  <div>
+  	<button id="addTrack">Add track</button>
+  </div>
+
+<br>
+<br>
+  <div>
+  	<button>Add</button>
+  </div>
+
+
+  </div>
+</fieldset>

@@ -1,0 +1,39 @@
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.1/jquery.form.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<link rel="stylesheet" href="/css/dropzone.css">
+<script src="/javascripts/dropzone.js"></script>
+
+<style>
+
+#progressbar {
+    width: 300px;
+    height: 10px
+}
+.ui-widget-header {
+    background: blue;
+}
+
+
+</style>
+
+<script>
+$(function() {
+    // "myAwesomeDropzone" is the camelized version of the HTML element's ID
+    Dropzone.options.fileUploader = {
+      paramName: "file", // The name that will be used to transfer the file
+      maxFilesize: 200, // MB
+      timeout: 1000000000
+    };
+});
+</script>
+<fieldset>
+<form action="/upload" class="dropzone" id="fileUploader">
+  <div class="fallback">
+    <input name="file" type="file" />
+  </div>
+</form>
+</fieldset>
+

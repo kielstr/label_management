@@ -1,0 +1,39 @@
+<link rel="stylesheet" type="text/css" href="/css/demoTiles.css">
+
+<%IF demos %>
+  <form method="post" action="/manage_demos/new_demos">
+
+  <div class="demoTiles">
+
+  <%FOR demo IN demos%>
+    <div class="tile center">
+      submitted: <%demo.submited_date%>
+      <h3><%demo.artist_name%></h3>
+      <div class="detailLabel">Name: </div><div class="detailItem"><%demo.name%></div>
+      <div class="detailLabel">Country: </div><div class="detailItem"><%demo.country_id%></div>
+      <div class="detailLabel">Email: </div><div class="detailItem"><%demo.email%></div>
+      <div class="detailLabel">Sent to other labels: </div><div class="detailItem"><%demo.sent_to_other%></div>
+      <div class="detailLabel">Labels released on: </div><div class="detailItem"><%demo.released_on%></div>
+      <div class="demoTileFiles">
+        <h4>FILES</h4>
+        <div><img src="/images/icons/demoManagementIcon.png"><br><a href="">filename</a></div>
+        <div><img src="/images/icons/demoManagementIcon.png"><br><a href="">filename</a></div>
+        <div><img src="/images/icons/demoManagementIcon.png"><br><a href="">filename</a></div>
+        <div><img src="/images/icons/demoManagementIcon.png"><br><a href="">filename</a></div>
+        <div><img src="/images/icons/demoManagementIcon.png"><br><a href="">filename</a></div>
+      </div>
+    </div>
+  <%END%>
+
+  </div>
+
+<%ELSE%>
+  <div class="table width90Percent centerTable">
+    <div class="row">
+      <div class="tableHeader">No new demos</div>
+    </div>
+  </div>
+<%END%>
+<pre>
+<% #USE Dumper; Dumper.dump_html({ demos => demos }) %>
+</pre>

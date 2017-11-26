@@ -1,0 +1,134 @@
+
+<%  IF errors  %>
+        <div id="server-error">
+        <ul>
+            <%  FOREACH row in errors  %>
+                <li><%  row  %></li>
+            <%  END  %>
+        </ul>
+    </div>
+<%  END  %>
+
+<div id="page">
+  <div id="pageHeader">
+        <span>New artist sign up</span>
+  </div>
+  <br>
+  <%IF admin %>
+  <p class="pageText">
+  Please provide the following information.
+  </p>
+  <%ELSE%>
+  <p class="pageText">
+  Congratulations on being selected as an AcidWorx artist. 
+  <br>
+  <br>
+  Please provide the following information.
+  </p>
+  <%END%>
+  <br>
+
+<form method="post" action="<%action%>">
+  <div class="centerContent noPadding">
+    <div class="">
+      <div class="formItemLabel">Artist Name:</div>
+      <div class="formItem required">
+        <input type="text" name="artist_name" value="<% session.new_artist.artist_name %>">
+      </div>
+    </div>
+    <br>
+    <div>
+      <div class="formItemLabel">Real Name:</div>
+      <div class="formItem required">
+        <input type="text" name="name" value="<% session.new_artist.name %>">
+      </div>
+    </div>
+    <br>
+    <div>
+      <div class="formItemLabel">Address:</div>
+      <div class="formItem">
+        <input type="text" name="address_line1" value="<% session.new_artist.address_line1 %>">
+      </div>
+    </div>
+    <br>
+    <div>
+      <div class="formItemLabel"></div>
+      <div class="formItem">
+        <input type="text" name="address_line2" value="<% session.new_artist.address_line2 %>">
+      </div>
+    </div>
+    <br>
+    <div>
+      <div class="formItemLabel"></div>
+      <div class="formItem">
+        <input type="text" name="address_line3" value="<% session.new_artist.address_line3 %>">
+      </div>
+    </div>
+
+    <p>
+      <div class="formItemLabel">Country:</div>
+      <div class="formItem">
+        <select name="country_id">
+        <%FOREACH country IN countries%>
+        <%country.country_code%>
+          <option value="<%country.country_id%>" <%IF country.country_id == session.new_artist.country_id %>selected<%END%>><%country.country_name%></option>
+        <%END%>
+        </select>
+      </div>
+    </p>
+
+    <br>
+    <div>
+      <div class="formItemLabel">Email:</div>
+      <div class="formItem required">
+        <input type="text" name="email" placeholder="example@example.com" value="<% session.new_artist.email %>">
+      </div>
+    </div>
+    <br>
+    <div>
+      <div class="formItemLabel">Payment Email:</div>
+      <div class="formItem required"><input type="text" name="payment_email" value="<% session.new_artist.payment_email %>" placeholder="example@example.com"></div>
+    </div>
+    <br>
+    <div>
+      <div class="formItemLabel">Soundcloud page:</div>
+      <div class="formItem"><input type="text" name="soundcloud_url" value="<% session.new_artist.soundcloud_url %>" placeholder="http://"></div>
+    </div>
+    <br>
+    <div>
+      <div class="formItemLabel">RA Page:</div>
+      <div class="formItem"><input type="text" name="ra_url" value="<% session.new_artist.ra_url %>" placeholder="http://"></div>
+    </div>
+    <br>
+    <div>
+      <div class="formItemLabel">Beatport page:</div>
+      <div class="formItem"><input type="text" name="beatport_url" value="<% session.new_artist.beatport_url %>" placeholder="http://"></div>
+    </div>
+    <br>
+    <div>
+      <div class="formItemLabel">Facebook page:</div>
+      <div class="formItem"><input type="text" name="facebook_page" value="<% session.new_artist.facebook_page %>" placeholder="http://"></div>
+    </div>
+    <br>
+    <div>
+      <div class="formItemLabel">Artist website:</div>
+      <div class="formItem"><input type="text" name="website" value="<% session.new_artist.website %>" placeholder="http://"></div>
+    </div>
+    <br>
+    <div>
+      <div class="formItemLabel">Bio:</div>
+      <div class=""><textarea name="bio"><% session.new_artist.bio %></textarea></div>
+    </div>
+    <br>
+    <div>
+    <div class="formItemLabel"></div>
+      <div class="formItem"> <button type="submit" value="Sign Up">Sign Up</button></div>
+      
+    </div>
+
+    <div></div>
+
+  </div>
+</form>
+
+</div>

@@ -1,0 +1,7 @@
+Hi {$name}
+
+Please use the following code to confirm your email.
+
+code: {$code}
+
+A&R Team

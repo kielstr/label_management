@@ -1,0 +1,46 @@
+<div class="pagePadding">
+<script type="text/javascript" src="/javascripts/AcidWorxLogin.js"></script>
+<div id="login">
+    <h2>Login</h2>
+
+    <p>You need to log in to continue.</p>
+
+    <% IF login_failed %>
+        <p class="redText">LOGIN FAILED</p>
+    <% END %>
+
+    <form method="post">
+        <label for="username">Username:</label>
+        <input type="text" name="__auth_extensible_username" id="username">
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" name="__auth_extensible_password" id="password">
+        <br>
+        <a href="#" id="forgotPassword">Forgot password?</a>
+        <br>
+        <br>
+        <button type="submit" value="Login">Login</button>
+        <%IF return_url %>
+            <input type="hidden" name="return_url" value="<% return_url %>">
+        <% END %>
+    </form>
+
+</div>
+
+<div id="passwordRest">
+    <% IF reset_password_handler %>
+    <form method="post" action="<% login_page %>">
+        <h2>Password reset</h2>
+        <p>Enter your username to obtain an email to reset your password</p>
+        <label for="username_reset">Username:</label>
+        <input type="text" name="username_reset" id="username_reset">
+        <br>
+        <br>
+        <button type="submit" name="submit_reset" value="Submit">Send</button>
+        <%IF return_url %>
+            <input type="hidden" name="return_url" value="<% return_url %>">
+        <% END %>
+    </form>
+    <% END %>
+</div>
+</div>

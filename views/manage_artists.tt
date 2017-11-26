@@ -1,0 +1,56 @@
+<fieldset>
+  <legend>Artist Management</legend>
+  <br>
+  <div>
+    <div class="table widthFull heightFull">
+    <div class="row">
+        <div class="cell center cellValignCenter width50percent"><img src="/images/icons/
+displayUserIcon.png"></div>
+        <div class="cell cellValignCenter width50percent">
+          <a href="/manage_artists/display">Display Artist</a>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="cell center cellValignCenter width50percent"><img src="/images/icons/addUserIcon.png"></div>
+        <div class="cell cellValignCenter width50percent">
+          <a href="/manage_artists/add">Add Artist</a>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="cell center cellValignCenter width50percent"><img src="/images/icons/editUserIcon.png"></div>
+        <div class="cell cellValignCenter width50percent"><a href="/manage_artists/edit">Edit Artist</a></div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="cell center cellValignCenter width50percent"><img src="/images/icons/displayAllUsers.png"></div>
+        <div class="cell cellValignCenter width50percent"><a href="/manage_artists/all_artists">All Artists</a></div>
+      </div>
+      <br>
+    </div>
+  </div>
+  <br>
+
+</fieldset>
+
+<br>
+
+<fieldset>
+  <legend>New Requests</legend>
+  <br>
+  <div>
+    <div class="table widthFull heightFull">
+      <div class="row">
+        <div class="cell center cellValignCenter width50percent"><img src="/images/icons/artistManagementIcon.png"></div>
+        <div class="cell cellValignCenter width50percent"><a href="/manage_artists/new_requests">New Artists Requests</a></div>
+      </div>
+      <br>
+    </div>
+  </div>
+  <br>
+
+</fieldset>
+
+<br>
+

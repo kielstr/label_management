@@ -1,0 +1,115 @@
+.addLink {
+  width: 100px;
+}
+
+#tags_tagsinput {
+  width: 98% !important;
+}
+div.tagsinput span.tag a,
+div.tagsinput span.tag {
+  color: #000;
+}
+
+#linkContainer {
+  display: none;
+}
+
+#fileUploadContainer {
+  display: none;
+}
+
+
+#emailConfirmCode {
+  width: 300px;
+  text-align: center;
+}
+
+#emailConfirmButton {
+  width: 100px;
+  position: relative;
+  top: 3px;
+  left: 10px; 
+}
+
+#demoText {
+  background-image: url("/images/smileBG.png");
+  background-repeat: no-repeat;
+  background-size: 50% 159%;
+  background-position: 53% 75%;
+  width: 90%;
+  margin: 0 auto;
+  //border: 1px dotted black;
+
+}
+
+fieldset form div {
+  //border: 1px dotted black;
+  padding: 0px;
+}
+form > div > select{
+  width: 100% !important;
+  //margin: 0 auto;
+  //border: 1px dotted black;  
+}
+
+form > div > label {
+    top: 8px;
+}
+
+#sendBy {
+  font-size: 14px;
+}
+
+div.tagsinput span.tag a, 
+div.tagsinput span.tag,
+div.tagsinput input,
+div.tagsinput span.tag,
+div.tagsinput {
+  padding: 2px;
+
+}
+
+span.tag a {
+    top: -1px;
+    position: relative;
+}
+
+
+div.tagsinput,
+select,
+textarea, 
+input {
+  background-color: #f7f7f7;
+  color: #7d7d7d;
+}
+
+.dropzone {
+  background: #eee;
+    background-image: url(/images/smileBG.png);
+    background-repeat: no-repeat;
+    background-size: 88% 120%;
+    background-position: 53% 75%;
+    display: block;
+}
+.dz-message {
+  color: #000;
+}
+.noLoginUpload {
+  height: 127px;
+  border: 1px dotted black;
+  vertical-align: middle;
+  line-height: 127px;
+}
+
+@media (max-width: 500px)  {
+    #emailConfirmCode {
+      width: 150px !important;
+    }
+
+    #emailConfirmButton {
+      width: 80px;
+      //position: relative;
+      top: 0px;
+    }
+
+}

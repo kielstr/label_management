@@ -1,0 +1,7 @@
+<br>
+<div id="page">
+  <div class="pageText">
+    <p><a href="/manage_release/add">Add Release</a></p>
+    <p><a href="/manage_release/show">Show Release</a></p>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+<fieldset>
+
+	<div><b>Name:</b><br>
+	<%session.artist.name%></div>
+	<br>
+	<div><b>Artist Name:</b>
+	<br>
+	<%session.artist.artist_name%></div>
+	<br>
+	<div><b>Address:</b> 
+	<br>
+	<%session.artist.address_line1%>
+	<br>
+	<%session.artist.address_line2%>
+	<br>
+	<%session.artist.address_line3%>
+	</div>
+	<br>
+	<div><b>Country:</b>
+	<br>
+	<%session.artist.country_id%></div>
+	<br>
+	<div><b>Email:</b>
+	<br>
+	<%session.artist.email%></div>
+	<br>
+	<div><b>Payment Email:</b>
+	<br>
+	<%session.artist.payment_email%></div>
+	<br>
+	<div><b>Soundcloud page:</b>
+	<br>
+	<%session.artist.soundcloud_url%></div>
+	<br>
+	<div><b>RA page:</b>
+	<br>
+	<%session.artist.ra_url%></div>
+	<br>
+	<div><b>Beatport page:</b>
+	<br>
+	<%session.artist.beatport_url%></div>
+	<br>
+	<div><b>Website:</b>
+	<br>
+	<%session.artist.website%></div>
+	<br>
+	<div><b>Bio:</b><p class="widthFull">
+	<br>
+	<%session.artist.bio%></p></div>
+
+</fieldset>
+
+<!--
+<pre>
+<%USE Dumper; Dumper.dump_html({ session => session }) %>
+</pre>
+-->

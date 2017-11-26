@@ -1,0 +1,18 @@
+
+
+<div id="page">
+  <div id="pageHeader">
+        <span>New artist sign up</span>
+  </div>
+  <br>
+<form method="post" action="new_artist">
+  <div class="centerContent noPadding">
+  <p class=pageText>
+  Your information has been received and will be reviewed. Once approved you will received a confirmation email.
+  </p>
+  </div>
+</form>
+
+
+</div>
+

@@ -1,0 +1,64 @@
+# configuration file for development environment
+
+# the logger engine to use
+# console: log messages to STDOUT (your console where you started the
+#          application server)
+# file:    log message to a file in log/
+logger: "file"
+
+# the log level for this environment
+# core is the lowest, it shows Dancer2's core log messages as well as yours
+# (debug, info, warning and error)
+log: "core"
+
+# should Dancer2 consider warnings as critical errors?
+warnings: 1
+
+# should Dancer2 show a stacktrace when an error is caught?
+# if set to yes, public/500.html will be ignored and either
+# views/500.tt or a default error template will be used.
+show_errors: 1
+
+# print the banner
+startup_info: 1
+
+session: "YAML"
+
+engines:
+    logger:
+      file:
+        log_dir: "/var/log/acidworx"
+        file_name: "acidworx.log"
+
+plugins:
+    Auth::Extensible:
+        #no_default_pages: 1
+        reset_password_handler: 1
+        mailer:
+            module: Mail::Message # Email module to use
+            options:              # Options for module
+                via: sendmail     # Options passed to $msg->send
+        mail_from: 'no-reply <no-reply@acidworx.com>' # From email address
+
+        #login_template: '/home/acidworx/AW1/dev/AcidWorx/views/login.tt'
+        realms:
+            users:
+                provider: 'Database'
+    Database:
+        driver: 'mysql'
+        database: 'acidworx'
+        host: 'db'
+        port: 3306
+        username: 'acidworx'
+        password: 'TrippyMoon1234'
+        connection_check_threshold: 10
+        dbi_params:
+            RaiseError: 1
+            AutoCommit: 1
+        on_connect_do: ["SET NAMES 'utf8'", "SET CHARACTER SET 'utf8'" ]
+        log_queries: 1
+    Email:
+        transport:
+          SMTP:
+            host: '192.168.1.10'
+            port: 25

@@ -1,0 +1,14 @@
+#pageContent {
+	//margin-left: 20px;
+	//margin-right: 20px;
+}
+
+#artistName {
+	maxlength: 45;
+}
+
+#congratulationsIcon {
+	height: 14px;
+	padding-right: 5px;
+}
+

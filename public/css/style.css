@@ -1,0 +1,505 @@
+/* page structure */
+
+body {
+	margin: 0;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 16px;
+	color: #444444;
+	background-color: #eee;
+}
+
+h3 {
+	font-size: 17px;
+}
+
+#headerPad,
+#header {
+    height: 46px;
+}
+
+
+#pageHeader,
+#subHeader {
+	height: 30px;
+}
+
+#acidworxLogo {
+    height: 46px;
+}
+
+#backImg {
+	height: 22px;
+}
+
+#header {
+	background-color: black;
+	width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+#pageHeader,
+#subHeader {
+	background-color: #d6d6d5;
+	text-align: center;
+}
+
+#headerPad {
+	width: 100%;
+}
+
+#footer {
+	height: 10px;
+	width: 100%;
+}
+
+/* header content */
+
+#acidworxLogo {
+	height: 42px;
+}
+
+#profileMenuIcon {
+	//float: left;
+    border-radius: 100px;
+    padding: 17px;
+    background-image: url(../images/default_profile_icon.png);
+    background-size: 100% 100%;
+    cursor:pointer;
+}
+
+.profileMenuText {
+	color: #FFFFFF;
+	line-height: 33px;
+	padding-left: 10px;
+	font-weight: bold;
+}
+
+.profileMenuWidth, 
+.sideMenuIconWidth {
+	width: 127px;
+	padding-right: 10px;
+}
+
+#sideMenuIcon {
+    height: 56px;
+    display: none;
+}
+
+/* sub header content */
+
+
+.subHeaderText,
+.pageHeaderText {
+	font-size: 18px;
+	font-weight: bold;
+	color: #5f5a5a;
+}
+
+#backImg {
+	height: 21px;
+}
+
+/* page formating */
+
+fieldset {
+	border: 1px solid #ccc;
+	width: 70%;
+  	margin: auto;
+  	background-color: #FFFFFF;
+}
+
+fieldset legend {
+	color: #FFFFFF;
+	background-color: #000000;
+	font-weight: bold;
+	border-radius: 3px;
+	opacity: .8;
+	padding: 7px;
+}
+
+.cellValignCenter {
+	vertical-align: middle;
+}
+
+.border {
+	border: 1px solid black;
+}
+
+.noPadding {
+	padding: 0;
+}
+.noMargin {
+	margin: 0;
+}
+
+.borderRed {
+	border-color: red !important;
+}
+.borderRed input::placeholder {
+  color: red;
+}
+
+input[type="text"] {
+	width: 97%;
+    height: 30px;
+    border: 1px solid #C0C0C0;
+    font-size: 16px;
+    //padding-left: 10px;
+    //border-radius: 10px;
+    padding-left: 10px;
+}
+
+select {
+	//width: calc(100% - 4px);
+    height: 34px;
+    border: 1px solid #C0C0C0;
+    font-size: 16px;
+    padding-left: 10px;
+    //border-radius: 10px;
+}
+
+input[type="password"] {
+	width: 97%;
+    height: 30px;
+    border: 1px solid #C0C0C0;
+    font-size: 16px;
+    //border-radius: 10px;
+    padding-left: 10px;
+}
+
+#forgotPassword {
+	font-size: 12px;
+}
+
+input[type="submit"],
+button {
+	width: 100%;
+    height:34px;
+    border: 1px solid #ccc!important;
+    font-size: 24px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    color: #444444;
+
+    cursor:pointer;
+}
+
+button:focus {
+	outline-width: 0;
+}
+
+textarea {
+	width: 99%;
+	font-size: 16px;
+	height: 100px;
+}
+
+#server-error {
+	display: none;
+}
+
+.pageText {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.redText {
+	color: red;
+}
+
+.widthFull {
+	width: 100%;
+}
+
+.width50percent {
+	width: 50%;
+}
+
+.heightFull {
+	height: 100%;
+}
+
+.widthvw {
+	width: 100vw;
+}
+
+.width60px {
+	width: 60px;
+}
+
+.heightvw {
+	height: 100vh;
+}
+
+.pad20px,
+.pagePadding {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.padLeft10 {
+	padding-left: 10px;
+}
+
+.padRight10 {
+	padding-right: 10px;
+}
+
+.center,
+.centerTable {
+	text-align: center;
+	margin: 0 auto;
+}
+
+.align-center {
+    display: block;
+    margin: 1.0em auto;
+    text-align: center;
+}
+
+.textAlignRight {
+	text-align: right;
+}
+.textAlignCenter {
+	text-align: center;
+}
+.textAlignLeft {
+	text-align: left;
+}
+
+.alignRight {
+	float: right
+}
+
+.width90Percent {
+	width: 90%;
+}
+
+.table {
+	display: table;
+}
+
+.row {
+	display: table-row;
+}
+
+.cell {
+	display: table-cell;
+}
+
+.tableHeader {
+	display: table-cell;
+	background-color: lightgray;
+	font-weight: bold;
+}
+
+.tableBorder {
+	border: 1px solid lightgray;
+}
+
+.cellBorder {
+	border: 1px solid lightgray;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    right: 3px;
+    top:46px;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.borderBlack {
+	border: 1px solid black;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Floating labels for inputs */
+
+form > div {
+  position: relative;
+}
+
+form > #linkContainer > div > label,
+form > div > label {
+  position: absolute;
+  top: 8px;
+  bottom: 0;
+  left: 8px;
+  width: 100%;
+  transition: 0.2s;
+  color: #7d7d7d;
+  font-size: 14px;
+}
+
+form > #linkContainer > div > input,
+form > div > select,
+form > div > input {
+	height: 37px;
+	width: 97%;
+	color: #424f63;
+	font-size: 14px;
+}
+
+form > div > div > input[type="radio"] {
+	margin-top: 11px;
+	margin-left: 4px;
+}
+
+form > div > select {
+	width: 99%;
+}
+
+form > #linkContainer > div > input,
+form > div > input {
+	padding-left: 5px;
+	margin-right: 20px;
+}
+
+form > div > textarea {
+	height: 100px;
+	//width: 98%;
+	border: 1px solid #ccc;
+}
+
+form > div > textarea:focus + label,
+form > #linkContainer > div > input:focus + label,
+form > div > input:focus + label,
+form > div > textarea:valid + label,
+form > div > input:valid + label,
+form > #linkContainer > div > input:valid + label {
+	bottom: 100%;
+  	margin-top: -16px;
+  	font-size: 14px;
+  	left: 0px;
+  	top: -4px;
+  	color: #444444;
+}
+
+form > label,
+form > div > span {
+  font-size: 14px;
+  color: #444444;
+  top: -5px;
+}
+
+form > div > textarea:focus,
+form > div > input:focus,
+form > #linkContainer > div > input:focus,
+form > div > textarea:valid,
+form > div > input:valid {
+	outline-width: 0;
+}
+
+.fontColor {
+	color: #424f63;;
+}
+
+#otherLabels {
+	font-size: 14px;
+	color: #ccc;
+	top: -5px;
+}
+
+
+#passwordRest {
+	display: none;
+}
+
+@media (max-width: 500px)  {
+
+	#headerPad,
+	#header {
+	    height: 55px;
+	}
+
+	#subHeader {
+		height: 30px;
+	}
+
+	#acidworxLogo {
+	    height: 46px;
+	}
+
+	#backImg {
+		height: 22px;
+	}
+
+
+	fieldset {
+		width: calc(100% - 40px);
+		//padding: 1px;
+		font-size: 16px;
+	}
+	fieldset > form > div {
+		padding: 4px;
+	}
+
+
+  	body {
+		margin: 0;
+		font-family: 'Source Sans Pro', sans-serif;
+		font-size: 18px;
+	}
+	button {
+		width: 99%;
+	    height:30px;
+	    font-size: 18px;
+	}
+	.formItem {
+		display: inline-block;
+		width: 59%;
+	    text-align: center;
+	    height: 34px;
+	}
+	.formItemLabel {
+		display: inline-block;
+		width: 39%;
+	    height:30px;
+	}
+
+	#acidworxLogo {
+		height: 42px;
+	}
+
+
+	.profileMenuText {
+		display: none;
+	}
+
+	.profileMenuWidth, .sideMenuIconWidth {
+	    width: 20px;
+	    padding-right: 15px;
+	}
+
+
+	form > div > label {
+		top: 12px;
+	}
+
+}
+
+}
+
+}
+
+
